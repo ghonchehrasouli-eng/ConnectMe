@@ -548,6 +548,14 @@ Includes detail instructions and voice playback functions.
 
 
 <section class="S" id="s-settings"><div class="bar"><div class="sp"></div><span class="bar-title">Settings</span><div class="sp"></div></div><div class="roll"><div class="sec">
+
+  <div class="card b-teal">
+    <div class="slbl">Onboarding</div>
+    <h1 class="title-xl">Start from the beginning</h1>
+    <p class="sub">View the welcome, connection check-in, and first breath again.</p>
+    <button class="btn teal full" style="margin-top:12px" onclick="resetAndShowOnboarding()">View Onboarding</button>
+  </div>
+
   <div class="pwa-note"><h3>PWA / Browser Notice</h3><p>This HTML is a browser prototype. Saved entries stay in this browser through localStorage. Reminders work only while the page is open and browser notifications are allowed. Full mobile push notifications require a production app/PWA with service worker or native notification setup.</p></div>
   <div class="card b-teal"><div class="slbl">Real Browser Notifications</div><h1 class="title-xl">Gentle reminders to return</h1><p class="sub">These reminders work while this HTML page is open in a browser and notifications are allowed.</p><button class="btn teal full" style="margin-top:12px" onclick="enableNotifications()">Enable Notifications</button><p class="tiny" id="notify-status" style="margin-top:10px">Notification permission not requested yet.</p></div>
   <div class="card b-navy"><div class="slbl">Reminder Times</div>
@@ -1264,7 +1272,51 @@ save=function(){
 
 setTimeout(refreshJourneyCardStates,50);
 
+
+/* Onboarding access fix */
+function resetAndShowOnboarding(){
+  try{
+    state.onboard=false;
+    state.answers=[];
+    localStorage.setItem(LS, JSON.stringify(state));
+  }catch(e){}
+  ai=-1;
+  document.querySelectorAll('.S').forEach(s=>s.classList.remove('on'));
+  document.getElementById('s-onboard')?.classList.add('on');
+  const nav=document.getElementById('nav');
+  if(nav) nav.style.display='none';
+  if(typeof renderUXOnboarding === 'function'){
+    uxOnStep=0;
+    renderUXOnboarding();
+  } else if(typeof initOnboard === 'function'){
+    initOnboard();
+  }
+}
+
+/* Force onboarding visible when URL has ?onboarding=1 or ?resetOnboarding=1 */
+(function(){
+  const p=new URLSearchParams(location.search);
+  if(p.get('onboarding')==='1' || p.get('resetOnboarding')==='1'){
+    setTimeout(resetAndShowOnboarding, 80);
+  }
+})();
+
 if(synth){synth.getVoices();synth.onvoiceschanged=()=>synth.getVoices()}renderFeelings();renderDash();renderHistory();renderHistoryInline();renderPills();renderPatterns();renderTimeline();renderInsights();initOnboard();
 </script>
+
+<script>
+/* Preview mode: always open onboarding first for review */
+window.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){
+    try{
+      state.onboard=false;
+      state.answers=[];
+      localStorage.setItem(LS, JSON.stringify(state));
+    }catch(e){}
+    if(typeof resetAndShowOnboarding === 'function') resetAndShowOnboarding();
+  },120);
+});
+</script>
+
 </body>
 </html>
