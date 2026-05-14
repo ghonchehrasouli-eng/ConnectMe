@@ -475,14 +475,12 @@ Includes detail instructions and voice playback functions.
 }
 
 #s-journey .card.b-teal:first-of-type {
-  background: transparent;
-  border: none;
-  padding: 4px 0 14px;
+  padding: 16px;
   margin-bottom: 8px;
 }
 
 #s-journey .card.b-teal:first-of-type .slbl {
-  display: none;
+  color: rgba(91,163,168,.85);
 }
 
 #s-journey .card.b-teal:first-of-type .title-xl {
@@ -644,10 +642,55 @@ Includes detail instructions and voice playback functions.
   color: rgba(189,199,201,.68);
 }
 
+
+/* === Added UX layer: constellation, daily bookends, insights, archive, safety === */
+.habit-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:11px}
+.habit-card{border-radius:16px;padding:15px;border:1px solid var(--b);background:rgba(10,22,34,.56);cursor:pointer;min-height:112px;transition:.25s ease;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.habit-card:hover{transform:translateY(-1px);border-color:rgba(91,163,168,.35)}
+.habit-card h3{font-family:'Playfair Display',serif;color:var(--peach);font-size:17px;margin-bottom:5px}
+.habit-card p{font-size:12px;line-height:1.48;color:rgba(189,199,201,.72)}
+.habit-emoji{font-size:25px;margin-bottom:7px}
+.connection-bookends{margin-top:14px}
+.constellation-card{overflow:hidden;position:relative}
+.constellation-row{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;margin-top:10px;border-radius:16px;background:rgba(10,22,34,.50);border:1px solid rgba(212,168,32,.18);font-size:24px;letter-spacing:2px}
+.constellation-note{margin-top:10px;padding:11px 12px;border-radius:14px;background:rgba(212,168,32,.08);border:1px solid rgba(212,168,32,.20);color:rgba(234,211,200,.84);font-size:12px;line-height:1.55;text-align:center}
+.constellation-cycle{margin-top:7px;text-align:center;font-size:11px;color:rgba(189,199,201,.55)}
+.star-firework{position:fixed;inset:0;z-index:1400;pointer-events:none;display:none;overflow:hidden}
+.star-firework.on{display:block}
+.star-pop{position:absolute;font-size:22px;animation:starBurst 1.8s ease-out forwards}
+@keyframes starBurst{0%{opacity:0;transform:translate(-50%,-50%) scale(.3) rotate(0deg)}15%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.2) rotate(220deg)}}
+.line-chart{position:relative;height:118px;border-radius:16px;border:1px solid var(--b);background:rgba(10,22,34,.50);margin:12px 0;padding:14px 10px 10px}
+.line-chart svg{width:100%;height:100%;overflow:visible}
+.chart-caption{font-size:12px;line-height:1.55;color:rgba(189,199,201,.70);margin-top:8px}
+.breakdown-row{display:flex;align-items:center;gap:8px;margin:9px 0}
+.breakdown-label{width:105px;font-size:11px;color:rgba(189,199,201,.65);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.breakdown-track{flex:1;height:8px;background:rgba(189,199,201,.08);border-radius:8px;overflow:hidden}
+.breakdown-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--rose-l));border-radius:8px}
+.milestone-card{border-radius:16px;padding:14px;margin-top:12px;border:1px solid rgba(212,168,32,.22);background:rgba(24,16,0,.48);color:rgba(234,211,200,.85);font-size:13px;line-height:1.6}
+.locked-context{display:block;margin-top:8px;font-size:11px;line-height:1.45;color:rgba(189,199,201,.54)}
+.archive-group{margin-bottom:18px}
+.archive-group-title{font-family:'Playfair Display',serif;color:var(--peach);font-size:18px;margin:14px 0 8px;padding-bottom:8px;border-bottom:1px solid rgba(189,199,201,.10)}
+.archive-summary{font-size:12px;line-height:1.55;color:rgba(189,199,201,.62);margin-bottom:8px}
+.star-btn{border:1px solid rgba(212,168,32,.28);background:rgba(212,168,32,.08);color:var(--peach);border-radius:999px;padding:6px 9px;font-size:11px;cursor:pointer;margin-top:8px}
+.star-btn.on{background:rgba(212,168,32,.22);border-color:rgba(212,168,32,.42)}
+.sentence-starters{display:flex;gap:7px;flex-wrap:wrap;margin:9px 0 10px}
+.starter-chip{border:1px solid rgba(91,163,168,.25);background:rgba(91,163,168,.10);color:var(--peach);border-radius:999px;padding:7px 10px;font-size:11px;cursor:pointer}
+.safety-link{margin-top:9px;background:rgba(189,199,201,.07);border:1px solid var(--b);color:rgba(234,211,200,.82);border-radius:999px;padding:8px 11px;font-size:12px;cursor:pointer}
+.safety-overlay{position:fixed;inset:0;z-index:1300;background:rgba(10,18,28,.90);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:24px;text-align:center}
+.safety-overlay.on{display:flex}
+.safety-card{max-width:350px;width:100%;border-radius:24px;background:linear-gradient(160deg,#243A4E,#152636);border:1px solid var(--b);padding:24px 18px;box-shadow:0 18px 50px rgba(0,0,0,.36)}
+.safety-card h2{font-family:'Playfair Display',serif;color:var(--peach);font-size:24px;margin-bottom:8px}
+.safety-card p{font-size:14px;line-height:1.7;color:rgba(189,199,201,.78);margin-bottom:12px}
+.push-note{border:1px solid rgba(212,168,32,.25);background:rgba(24,16,0,.55);border-radius:16px;padding:14px;margin-bottom:12px}
+.push-note h3{font-family:'Playfair Display',serif;color:var(--peach);font-size:20px;margin-bottom:6px}
+.push-note p{font-size:13px;line-height:1.6;color:rgba(189,199,201,.75)}
+@media(max-width:380px){.habit-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 <div class="cf" id="cf"></div>
+<div class="star-firework" id="star-firework"></div>
 
 <div class="feedback-overlay" id="feedback-overlay">
   <div class="feedback-card">
@@ -663,6 +706,16 @@ Includes detail instructions and voice playback functions.
   <div class="logo-row"><div class="logo-mark">🌿</div><div style="flex:1"><div class="logo-name" id="home-greeting">Connect Me To Me</div><div class="logo-tag" id="home-tag">Your inner journey</div></div><span class="pill" id="streak-pill">🌱 1 day of returning to yourself</span></div>
   <div class="sec">
     <div class="card b-teal" id="continue-card"><div class="slbl">Continue Where You Left Off</div><h1 class="title-xl" id="continue-title">Your Inner Journey</h1><p class="sub" id="continue-sub">Begin with your daily reconnection ritual.</p><button class="btn teal full" style="margin-top:14px" onclick="go(lastScreen||'s-ritual')">Continue</button></div>
+
+
+    <div class="card b-navy constellation-card">
+      <div class="slbl">Inner Constellation</div>
+      <h1 class="title-xl">Stars of Reconnection</h1>
+      <p class="sub">Every star is one moment you came back to yourself.</p>
+      <div class="constellation-row" id="constellation-row">☆ ☆ ☆ ☆ ☆</div>
+      <div class="constellation-note" id="constellation-note">Complete 5 returns to yourself to form a new constellation.</div>
+      <div class="constellation-cycle" id="constellation-cycle">Constellation 1 begins</div>
+    </div>
 
     <!-- Primary metric: Inner Connection -->
     <div class="card b-navy" id="home-conn-card" style="text-align:center;padding:20px 16px">
@@ -689,13 +742,24 @@ Includes detail instructions and voice playback functions.
 <section class="S" id="s-ritual"><div class="bar"><div class="sp"></div><span class="bar-title">Inner Connection Practice</span><div class="sp"></div></div><div class="roll"><div class="sec">
   <div class="card b-teal"><div class="slbl">Lightweight Daily Check-In</div><h1 class="title-xl">How connected do you feel to yourself today?</h1><div class="slider" id="conn-slider" onclick="setSlider(event,'conn')"><div class="slider-fill" id="conn-fill2"></div><div class="slider-num" id="conn-num2">5</div></div><div style="display:flex;justify-content:space-between;margin-top:6px"><span class="tiny">Disconnected</span><span class="tiny">Present</span></div></div>
   <div class="card b-navy"><div class="slbl">Feeling Check</div><p>How do you feel right now?</p><div class="checkin-row" id="feelings-chips"></div></div>
-  <div class="card b-gold"><div class="slbl">Inner Connection Practice Category</div><h1 class="title-xl">Return to Yourself</h1><p class="sub">Choose one small practice before journaling, or move directly into the Inner Child / Compassionate Adult conversation.</p><div class="practice-grid">
+  <div class="card b-gold"><div class="slbl">Inner Connection Toolbox</div><div class="practice-grid">
     <div class="practice-card" onclick="openPractice('breathwork')"><div class="p-icon-lite">🌬️</div><div><h4>Short Breathwork Ritual</h4><p>A simple breathing pause to return to yourself.</p></div></div>
     <div class="practice-card" onclick="openPractice('body')"><div class="p-icon-lite">🫀</div><div><h4>Body Check-In</h4><p>Notice where the feeling lives in the body.</p></div></div>
     <div class="practice-card" onclick="openPractice('heart')"><div class="p-icon-lite">🧘</div><div><h4>Somatic Exercise</h4><p>Gentle body-based practices to release tension and return to yourself.</p></div></div>
     <div class="practice-card" onclick="openPractice('groundingMoment')"><div class="p-icon-lite">🌎</div><div><h4>Nervous System Grounding Moment</h4><p>Orient to the present moment through the senses.</p></div></div>
   </div></div>
-  <div class="card b-rose"><div class="slbl">Live Interactive Journaling</div><h1 class="title-xl">Inner Child / Compassionate Adult Conversation</h1><p>Move step by step: Adult asks, Inner Child responds, Compassionate Adult answers, then reconnection is saved to your archive.</p><button class="btn teal full" style="margin-top:12px" onclick="openPractice('dialogue')">Start Live Dialogue</button></div>
+  <div class="card b-rose"><div class="slbl">Deeper Inner Connection</div><h1 class="title-xl">Little Me, Held by Compassionate Me</h1><p>Warm, emotional, and instantly inner-child focused.</p><button class="btn teal full" style="margin-top:12px" onclick="openPractice('dialogue')">Start Live Dialogue</button></div>
+
+  <div class="card b-navy connection-bookends">
+    <div class="slbl">Daily Bookends</div>
+    <h1 class="title-xl">Morning & Evening Return</h1>
+    <p class="sub">Two 30-second rituals to make inner connection feel like a companion in your day.</p>
+    <div class="habit-grid" style="margin-top:12px">
+      <div class="habit-card" onclick="openMorningIntention()"><div class="habit-emoji">🌅</div><h3>Morning Intention</h3><p>What does your inner child need today?</p></div>
+      <div class="habit-card" onclick="openEveningReflection()"><div class="habit-emoji">🌙</div><h3>Evening Reflection</h3><p>What did you give yourself today?</p></div>
+    </div>
+  </div>
+
 </div></div></section>
 <section class="S" id="s-journey"><div class="bar"><div class="sp"></div><span class="bar-title">Inner Journey</span><div class="sp"></div></div><div class="roll"><div class="sec">
   <div class="journey-tabs">
@@ -704,7 +768,7 @@ Includes detail instructions and voice playback functions.
     <button class="journey-tab" onclick="switchJourneyTab('insights',this)">Insights</button>
   </div>
   <div class="journey-panel on" id="journey-panel-map">
-  <div class="card b-teal"><div class="slbl">PART I — Returning to Yourself</div><h1 class="title-xl">Building Inner Connection</h1><p class="sub">Emotional Awareness · Inner Child Connection · Supportive Compassionate Adult · Grounding & Self Nourishment</p></div><div class="journey-timeline-group" id="part1-timeline-group">
+  <div class="card b-teal"><div class="slbl">PART I — Why Inner Connection?</div><h1 class="title-xl">Building Inner Connection</h1><p class="sub">The quality of our relationship and connection with ourselves is reflected in every aspect of our life and relationships.</p></div><div class="journey-timeline-group" id="part1-timeline-group">
   <div class="lesson-card" onclick="openLessonProgressive('emotional-awareness')"><h3>Emotional Awareness</h3><p>Emotions are neurobiological responses of our body to our thoughts, inner dialogue and outer circumstances.</p><span class="pill" id="p-emotional-awareness">Not visited</span></div>
   <div class="lesson-card" onclick="openLessonProgressive('inner-child')"><h3>Inner Child Connection</h3><p>The foundation of inner connection is the relationship between our adult self and our inner child.</p><span class="pill" id="p-inner-child">Not visited</span></div>
   <div class="lesson-card" onclick="openLessonProgressive('supportive-adult')"><h3>Supportive Compassionate Adult</h3><p>We become a supportive compassionate adult when we take responsibility for our feelings and our inner child's feelings.</p><span class="pill" id="p-supportive-adult">Not visited</span></div>
@@ -756,6 +820,12 @@ Includes detail instructions and voice playback functions.
   </div>
 
   <div class="pwa-note"><h3>PWA / Browser Notice</h3><p>This HTML is a browser prototype. Saved entries stay in this browser through localStorage. Reminders work only while the page is open and browser notifications are allowed. Full mobile push notifications require a production app/PWA with service worker or native notification setup.</p></div>
+  
+  <div class="push-note">
+    <h3>Production Push Notifications</h3>
+    <p>For the production app, reminders should run through native iOS/Android push notifications or a PWA service worker, so the habit loop continues even when the page is closed.</p>
+  </div>
+
   <div class="card b-teal"><div class="slbl">Real Browser Notifications</div><h1 class="title-xl">Gentle reminders to return</h1><p class="sub">These reminders work while this HTML page is open in a browser and notifications are allowed.</p><button class="btn teal full" style="margin-top:12px" onclick="enableNotifications()">Enable Notifications</button><p class="tiny" id="notify-status" style="margin-top:10px">Notification permission not requested yet.</p></div>
   <div class="card b-navy"><div class="slbl">Reminder Times</div>
     <div class="rem-row"><div><b style="color:var(--peach)">Morning</b><p class="tiny">How do you want to care for yourself today?</p></div><input class="time-input" id="rem-morning" type="time" value="09:00"></div>
@@ -771,6 +841,18 @@ Includes detail instructions and voice playback functions.
   <div class="ni" id="n-journey" onclick="go('s-journey');setN('n-journey')"><svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Journey</span></div>
   <div class="ni" id="n-settings" onclick="go('s-settings');setN('n-settings')"><svg width="24" height="24" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg><span>Settings</span></div>
 </div></nav>
+
+<div class="safety-overlay" id="safety-overlay">
+  <div class="safety-card">
+    <div style="font-size:42px;margin-bottom:10px">🫶</div>
+    <h2>It’s okay to pause</h2>
+    <p>You do not have to finish this right now. You can come back anytime.</p>
+    <p>Try one grounding moment: look around, name one thing you can see, feel your feet, and take one soft breath.</p>
+    <button class="btn teal full" onclick="openPractice('groundingMoment');closeSafetyPause()">Go to Grounding</button>
+    <button class="btn ghost full" style="margin-top:8px" onclick="closeSafetyPause()">Stay here</button>
+  </div>
+</div>
+
 <div class="modal" id="lesson-modal" onclick="closeLesson()"><div class="sheet" onclick="event.stopPropagation()"><div class="mhd"><span class="mtitle" id="lesson-title">Lesson</span><button class="close" onclick="closeLesson()">✕</button></div><div id="lesson-body"></div></div></div>
 <script>
 const LS='cmtm-polished-v3-onboarding';let state={onboard:false,answers:[],xp:0,streak:1,lastScreen:'s-ritual',conn:null,feelings:[],history:[],completed:{},checkins:[],userName:'',userEmail:'',selectedPatterns:{}};try{state={...state,...JSON.parse(localStorage.getItem(LS)||'{}')}}catch(e){}
@@ -783,14 +865,14 @@ if(new URLSearchParams(location.search).get('resetOnboarding')==='1'){
   localStorage.setItem(LS,JSON.stringify(state));
 }
 const lessons={
-'emotional-awareness':{title:'Emotional Awareness',stage:'Awareness',part:'PART I — Returning to Yourself',text:`Emotions are neurobiological responses of our body to our thoughts, inner dialogue and outer circumstances. Either way — they are real.
+'emotional-awareness':{title:'Emotional Awareness',stage:'Awareness',part:'PART I — Why Inner Connection?',text:`Emotions are neurobiological responses of our body to our thoughts, inner dialogue and outer circumstances. Either way — they are real.
 
 All emotions are valuable, whether desirable or not. The uncomfortable ones act as an alarm — a signal that an unmet basic need wants our attention, care and love.
 
 Mindfully allowing emotions to be present, and giving them space, is what keeps us from being pulled into them and controlled by them.`,practice:`How do you feel right now?
 Use the feelings directory if you can't name it.
 Rate the intensity of the feelings from 0–10.`},
-'inner-child':{title:'Inner Child Connection',stage:'Connection',part:'PART I — Returning to Yourself',text:`The foundation of inner connection is the relationship between our adult self and our inner child.
+'inner-child':{title:'Inner Child Connection',stage:'Connection',part:'PART I — Why Inner Connection?',text:`The foundation of inner connection is the relationship between our adult self and our inner child.
 
 How do we give love and care to ourselves the way a compassionate parent gives it to their child?
 
@@ -799,12 +881,12 @@ How do we soothe and comfort ourselves when undesirable feelings arise?
 What do we do in daily life as an act of love and care for ourselves? How is our inner conversation? What's our tone of voice?`,practice:`Adult: What do you need from me right now?
 Inner Child: respond naturally.
 Adult: respond with care.`},
-'supportive-adult':{title:'Supportive Compassionate Adult',stage:'Compassion',part:'PART I — Returning to Yourself',text:`We become a supportive compassionate adult when we take responsibility for our feelings and our inner child's feelings — and when we soothe and comfort ourselves exactly as a loving, compassionate parent would.
+'supportive-adult':{title:'Supportive Compassionate Adult',stage:'Compassion',part:'PART I — Why Inner Connection?',text:`We become a supportive compassionate adult when we take responsibility for our feelings and our inner child's feelings — and when we soothe and comfort ourselves exactly as a loving, compassionate parent would.
 
 In this way, we stop expecting others to be responsible for our happiness or to meet our needs for love, acceptance and security. And we stop feeling responsible for others' happiness too.
 
 Our inner child feels we are truly there for them — that they have our support and are not alone. At the same time, we gently guide ourselves toward growth — with care, understanding and compassion.`,practice:`Write one supportive adult response to yourself today.`},
-'grounding':{title:'Grounding & Self Nourishment',stage:'Nourishment',part:'PART I — Returning to Yourself',text:`From the list below — which of these do you practise as an act of care and love for yourself?
+'grounding':{title:'Grounding & Self Nourishment',stage:'Nourishment',part:'PART I — Why Inner Connection?',text:`From the list below — which of these do you practise as an act of care and love for yourself?
 
 What do you do to comfort and soothe yourself when undesirable feelings arise?
 
@@ -922,7 +1004,7 @@ function openLesson(id){let l=lessons[id];state.lastScreen='s-journey';state.com
 function closeLesson(){stopVoice();stopBreathVoice();document.getElementById('lesson-modal').classList.remove('on')}
 function completeLesson(id){let note=document.getElementById('lesson-note').value.trim();state.completed[id]='practised';state.xp+=15;state.history.unshift({type:lessons[id].title,date:new Date().toLocaleString(),connection:state.conn??'—',feeling:lessons[id].stage,note});confetti();save();closeLesson()}
 function renderPills(){Object.keys(lessons).forEach(id=>{let el=document.getElementById('p-'+id);if(!el)return;let v=state.completed[id];el.textContent=v==='practised'?'Practised':v==='visited'?'Visited':'Not visited';el.className='pill '+(v?'done':'')})}
-function renderDash(){document.getElementById('streak-pill').textContent=plantStage(state.streak||1)+' '+(state.streak||1)+' day of returning to yourself';var cd=document.getElementById('home-conn-display');if(cd)cd.textContent=state.conn===null?'—':state.conn+'/10';var cb=document.getElementById('home-conn-bar');if(cb)cb.style.width=(state.conn===null?0:state.conn*10)+'%';document.getElementById('prac-num').textContent=Object.values(state.completed).filter(Boolean).length;document.getElementById('hist-num').textContent=state.history.length;let stages=['Awareness','Inner Child','Supportive Adult','Mind Filter','Inner Voice','Armour','Inner Connect'];let done=Object.values(state.completed).filter(Boolean).length;document.getElementById('stage-num').textContent=stages[Math.min(Math.floor(done/2),stages.length-1)];document.getElementById('journey-map').innerHTML=stages.map((s,i)=>`<div class="node ${i<Math.floor(done/2)?'done':i===Math.floor(done/2)?'active':''}"><div class="emoji">${['🌫','🌿','💛','🧠','🗣','🛡','✨'][i]}</div><h4>${s}</h4><p>${i<3?'Returning to Yourself':i<6?'Why We Disconnect':'Inner Connect'}</p></div>`).join('');let recent=state.checkins.slice(-7);document.getElementById('trend-box').innerHTML=recent.length?recent.map(x=>`<div style="margin:8px 0"><div class="tiny">${x.feeling} · connection ${x.connection}/10</div><div class="xp-bar"><div class="xp-fill" style="width:${x.connection*10}%"></div></div></div>`).join(''):'Complete a check-in to see your emotional history.'}
+function renderDash(){document.getElementById('streak-pill').textContent=plantStage(state.streak||1)+' '+(state.streak||1)+' day of returning to yourself';var cd=document.getElementById('home-conn-display');if(cd)cd.textContent=state.conn===null?'—':state.conn+'/10';var cb=document.getElementById('home-conn-bar');if(cb)cb.style.width=(state.conn===null?0:state.conn*10)+'%';document.getElementById('prac-num').textContent=Object.values(state.completed).filter(Boolean).length;document.getElementById('hist-num').textContent=state.history.length;let stages=['Awareness','Inner Child','Supportive Adult','Mind Filter','Inner Voice','Armour','Inner Connect'];let done=Object.values(state.completed).filter(Boolean).length;document.getElementById('stage-num').textContent=stages[Math.min(Math.floor(done/2),stages.length-1)];document.getElementById('journey-map').innerHTML=stages.map((s,i)=>`<div class="node ${i<Math.floor(done/2)?'done':i===Math.floor(done/2)?'active':''}"><div class="emoji">${['🌫','🌿','💛','🧠','🗣','🛡','✨'][i]}</div><h4>${s}</h4><p>${i<3?'Inner Connection':i<6?'Why We Disconnect':'Inner Connect'}</p></div>`).join('');let recent=state.checkins.slice(-7);document.getElementById('trend-box').innerHTML=recent.length?recent.map(x=>`<div style="margin:8px 0"><div class="tiny">${x.feeling} · connection ${x.connection}/10</div><div class="xp-bar"><div class="xp-fill" style="width:${x.connection*10}%"></div></div></div>`).join(''):'Complete a check-in to see your emotional history.'}
 function renderHistory(){let box=document.getElementById('history-list');if(!box)return;box.innerHTML=state.history.length?state.history.map(h=>`<div class="history-item"><h4>${h.type} · ${h.date}</h4><p>Feeling: ${h.feeling} · Connection: ${h.connection}/10</p>${h.note?`<p>${h.note}</p>`:''}</div>`).join(''):'No saved entries yet.'}
 function voice(){let vs=synth.getVoices();return vs.find(v=>/Samantha|Karen|Moira|Fiona|Victoria|Google UK English Female|Zira/i.test(v.name))||vs.find(v=>v.lang&&v.lang.startsWith('en'))||vs[0]}
 function toggleVoice(text){
@@ -962,7 +1044,7 @@ const humanAudioFiles={
   // 'inner-child':'audio/inner-child.mp3',
   // 'supportive-adult':'audio/supportive-adult.mp3'
 };
-const practiceLabels={breathwork:'Short Breathwork Ritual',body:'Body Check-In',heart:'Somatic Exercise',groundingMoment:'Nervous System Grounding Moment',dialogue:'Inner Child / Compassionate Adult Conversation'};
+const practiceLabels={breathwork:'Short Breathwork Ritual',body:'Body Check-In',heart:'Somatic Exercise',groundingMoment:'Nervous System Grounding Moment',dialogue:'Little Me, Held by Compassionate Me'};
 let dialogue={before:5,after:5,childFeeling:'',childNeed:'',adultResponse:'',offer:''};
 
 function personalizedPath(){
@@ -988,7 +1070,7 @@ function renderDash(){
   let stages=['Awareness','Inner Child','Supportive Adult','Mind Filter','Inner Voice','Armour','Inner Connect'];
   let done=Object.values(state.completed||{}).filter(Boolean).length;
   document.getElementById('stage-num').textContent=stages[Math.min(Math.floor(done/2),stages.length-1)];
-  document.getElementById('journey-map').innerHTML=stages.map((s,i)=>`<div class="node ${i<Math.floor(done/2)?'done':i===Math.floor(done/2)?'active':''}"><div class="emoji">${['🌫','🌿','💛','🧠','🗣','🛡','✨'][i]}</div><h4>${s}</h4><p>${i<3?'Returning to Yourself':i<6?'Why We Disconnect':'Inner Connect'}</p></div>`).join('');
+  document.getElementById('journey-map').innerHTML=stages.map((s,i)=>`<div class="node ${i<Math.floor(done/2)?'done':i===Math.floor(done/2)?'active':''}"><div class="emoji">${['🌫','🌿','💛','🧠','🗣','🛡','✨'][i]}</div><h4>${s}</h4><p>${i<3?'Inner Connection':i<6?'Why We Disconnect':'Inner Connect'}</p></div>`).join('');
   let recent=(state.checkins||[]).slice(-7);
   if(!recent.length){document.getElementById('trend-box').innerHTML='Complete a check-in to see your inner connection trends.';return}
   let vals=recent.map(x=>Number(x.connection)||0), avg=(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1), change=vals.length>1?vals[vals.length-1]-vals[0]:0;
@@ -1713,7 +1795,7 @@ renderDash=function(){
   document.getElementById('stage-num').textContent=stages[Math.min(Math.floor(done/2),stages.length-1)];
 
   // Journey map
-  document.getElementById('journey-map').innerHTML=stages.map((s,i)=>`<div class="node ${i<Math.floor(done/2)?'done':i===Math.floor(done/2)?'active':''}"><div class="emoji">${['🌫','🌿','💛','🧠','🗣','🛡','✨'][i]}</div><h4>${s}</h4><p>${i<3?'Returning to Yourself':i<6?'Why We Disconnect':'Returning to myself again and again.'}</p></div>`).join('');
+  document.getElementById('journey-map').innerHTML=stages.map((s,i)=>`<div class="node ${i<Math.floor(done/2)?'done':i===Math.floor(done/2)?'active':''}"><div class="emoji">${['🌫','🌿','💛','🧠','🗣','🛡','✨'][i]}</div><h4>${s}</h4><p>${i<3?'Inner Connection':i<6?'Why We Disconnect':'Deepening Connection.'}</p></div>`).join('');
 
   // Trend — show only the trend line and a brief summary, no duplicate metric grid
   let recent=(state.checkins||[]).slice(-7);
@@ -1817,6 +1899,162 @@ function resetAndShowOnboarding(){
     setTimeout(resetAndShowOnboarding, 80);
   }
 })();
+
+
+/* === 9 requested UX items implemented === */
+state.morningIntentions=state.morningIntentions||[];
+state.eveningReflections=state.eveningReflections||[];
+state.starredEntries=state.starredEntries||{};
+
+function ensureEntryIds(){
+  (state.history||[]).forEach((h,i)=>{ if(!h.id) h.id='entry-'+Date.now()+'-'+i+'-'+Math.floor(Math.random()*9999); });
+}
+function returnCount(){
+  return Object.values(state.completed||{}).filter(Boolean).length + (state.morningIntentions||[]).length + (state.eveningReflections||[]).length;
+}
+function renderConstellation(){
+  const row=document.getElementById('constellation-row'); if(!row)return;
+  const count=returnCount();
+  const cycle=Math.floor(count/5)+1;
+  const stars=count%5;
+  const visibleStars=stars===0 && count>0 ? 5 : stars;
+  row.innerHTML=Array.from({length:5},(_,i)=>i<visibleStars?'⭐':'☆').join(' ');
+  const note=document.getElementById('constellation-note');
+  const cyc=document.getElementById('constellation-cycle');
+  if(note){
+    if(count>0 && count%5===0){
+      note.innerHTML='✨ <strong>A new constellation is born.</strong><br>You returned to yourself five times. That is real care.';
+    }else{
+      note.textContent=`${visibleStars} of 5 returns completed. Every star is one moment of inner care.`;
+    }
+  }
+  if(cyc)cyc.textContent=count>0 && count%5===0 ? `Constellation ${cycle} complete` : `Constellation ${cycle} in progress`;
+}
+function celebrateConstellation(){
+  const count=returnCount();
+  if(count===0 || count%5!==0)return;
+  const key='constellationCelebrated_'+count;
+  if(state[key])return;
+  state[key]=true;
+  localStorage.setItem(LS,JSON.stringify(state));
+  const fw=document.getElementById('star-firework'); if(!fw)return;
+  fw.innerHTML='';
+  fw.classList.add('on');
+  for(let i=0;i<28;i++){
+    const s=document.createElement('div');
+    s.className='star-pop';
+    s.textContent=['⭐','✨','🌟','💫'][i%4];
+    s.style.left='50%'; s.style.top='45%';
+    s.style.setProperty('--x',(Math.random()*420-210)+'px');
+    s.style.setProperty('--y',(Math.random()*520-260)+'px');
+    s.style.animationDelay=(Math.random()*.25)+'s';
+    fw.appendChild(s);
+  }
+  showFeedback('A new constellation is born','You returned to yourself five times. That is real care.','✨');
+  setTimeout(()=>fw.classList.remove('on'),2100);
+}
+function insertText(id,text){
+  const el=document.getElementById(id); if(!el)return;
+  if(!el.value) el.value=text+' '; else el.value+='\n'+text+' ';
+  el.focus();
+}
+function openMorningIntention(){
+  document.getElementById('lesson-title').textContent='Morning Intention';
+  document.getElementById('lesson-body').innerHTML=`<div class="card b-teal"><div class="slbl">Morning Intention</div><h1 class="title-xl">What does your inner child need today?</h1><p class="sub">A 30-second check-in to begin the day with care.</p><div class="sentence-starters"><button class="starter-chip" onclick="insertText('habit-note','Today my inner child needs...')">Today my inner child needs...</button><button class="starter-chip" onclick="insertText('habit-note','I can care for myself by...')">I can care for myself by...</button></div><textarea id="habit-note" placeholder="Today my inner child needs..."></textarea><button class="btn teal full" style="margin-top:12px" onclick="saveMorningIntention()">Save Morning Intention</button></div>`;
+  document.getElementById('lesson-modal').classList.add('on');
+}
+function openEveningReflection(){
+  document.getElementById('lesson-title').textContent='Evening Reflection';
+  document.getElementById('lesson-body').innerHTML=`<div class="card b-gold"><div class="slbl">Evening Reflection</div><h1 class="title-xl">What did you give yourself today?</h1><p class="sub">A gentle close-out to help the app feel like a companion, not a task list.</p><div class="sentence-starters"><button class="starter-chip" onclick="insertText('habit-note','Today I gave myself...')">Today I gave myself...</button><button class="starter-chip" onclick="insertText('habit-note','One way I returned to myself was...')">One way I returned to myself was...</button></div><textarea id="habit-note" placeholder="Today I gave myself..."></textarea><button class="btn teal full" style="margin-top:12px" onclick="saveEveningReflection()">Save Evening Reflection</button></div>`;
+  document.getElementById('lesson-modal').classList.add('on');
+}
+function saveMorningIntention(){
+  const note=document.getElementById('habit-note')?.value?.trim()||'';
+  const e={id:'entry-'+Date.now(),type:'Morning Intention',date:new Date().toLocaleString(),connection:state.conn??connVal,feeling:'Intention',note};
+  state.morningIntentions.unshift(e); state.history.unshift(e); state.completed['morning-intention']=true; state.xp+=8;
+  save(); closeLesson(); showFeedback('Morning intention saved','You began the day by listening inward.','🌅');
+}
+function saveEveningReflection(){
+  const note=document.getElementById('habit-note')?.value?.trim()||'';
+  const e={id:'entry-'+Date.now(),type:'Evening Reflection',date:new Date().toLocaleString(),connection:state.conn??connVal,feeling:'Reflection',note};
+  state.eveningReflections.unshift(e); state.history.unshift(e); state.completed['evening-reflection']=true; state.xp+=8;
+  save(); closeLesson(); showFeedback('Evening reflection saved','You noticed what you gave yourself today.','🌙');
+}
+function showSafetyPause(){document.getElementById('safety-overlay')?.classList.add('on')}
+function closeSafetyPause(){document.getElementById('safety-overlay')?.classList.remove('on')}
+
+const originalDialogueHTMLForSafety = dialogueHTML;
+dialogueHTML=function(){
+  dialogue={before:connVal,after:connVal,childFeeling:'',childNeed:'',adultResponse:'',offer:''};
+  return `<div class="card b-rose"><div class="slbl">Before Connection</div><h1 class="title-xl">How connected do you feel before this dialogue?</h1><button class="safety-link" onclick="showSafetyPause()">I need a moment</button><div class="slider" onclick="setDialogueSlider(event,'before')"><div class="slider-fill" id="dlg-before-fill" style="width:${dialogue.before*10}%"></div><div class="slider-num" id="dlg-before-num">${dialogue.before}</div></div></div><div class="step-dots"><span class="step-dot on"></span><span class="step-dot"></span><span class="step-dot"></span><span class="step-dot"></span></div><div id="dialogue-steps"><div class="dialogue-step on"><div class="card b-navy"><div class="slbl">Adult asks</div><h1 class="title-xl">How are you feeling right now?</h1><div class="sentence-starters"><button class="starter-chip" onclick="insertText('dlg-child-feeling','I feel... because...')">I feel... because...</button><button class="starter-chip" onclick="insertText('dlg-child-feeling','What I wish someone understood is...')">What I wish someone understood is...</button></div><textarea id="dlg-child-feeling" placeholder="I feel... because..."></textarea><button class="safety-link" onclick="showSafetyPause()">I need a moment</button><button class="btn teal full" style="margin-top:12px" onclick="nextDialogue(1)">Next</button></div></div><div class="dialogue-step"><div class="card b-navy"><div class="slbl">Adult listens</div><h1 class="title-xl">What do you need from me?</h1><div class="sentence-starters"><button class="starter-chip" onclick="insertText('dlg-child-need','What I really need is...')">What I really need is...</button><button class="starter-chip" onclick="insertText('dlg-child-need','Please help me feel...')">Please help me feel...</button></div><textarea id="dlg-child-need" placeholder="What I really need is..."></textarea><button class="safety-link" onclick="showSafetyPause()">I need a moment</button><button class="btn teal full" style="margin-top:12px" onclick="nextDialogue(2)">Next</button></div></div><div class="dialogue-step"><div class="card b-teal"><div class="slbl">Compassionate Adult responds</div><h1 class="title-xl">Respond with care</h1><div class="sentence-starters"><button class="starter-chip" onclick="insertText('dlg-adult-response','I hear you. I am here with you...')">I hear you...</button><button class="starter-chip" onclick="insertText('dlg-adult-response','You are not alone. I can support you by...')">You are not alone...</button></div><textarea id="dlg-adult-response" placeholder="I hear you. I am here with you..."></textarea><button class="safety-link" onclick="showSafetyPause()">I need a moment</button><button class="btn teal full" style="margin-top:12px" onclick="nextDialogue(3)">Next</button></div></div><div class="dialogue-step"><div class="card b-gold"><div class="slbl">Repair / Reconnection</div><h1 class="title-xl">What can I offer you today?</h1><div class="sentence-starters"><button class="starter-chip" onclick="insertText('dlg-offer','Today I can offer you...')">Today I can offer you...</button><button class="starter-chip" onclick="insertText('dlg-offer','One small act of care will be...')">One small act of care...</button></div><textarea id="dlg-offer" placeholder="Today I can offer you..."></textarea><div style="margin-top:12px"><div class="slbl">After Connection</div><div class="slider" onclick="setDialogueSlider(event,'after')"><div class="slider-fill" id="dlg-after-fill" style="width:${dialogue.after*10}%"></div><div class="slider-num" id="dlg-after-num">${dialogue.after}</div></div></div><button class="btn teal full" style="margin-top:12px" onclick="saveDialogue()">Save Full Dialogue</button><button class="btn ghost full" style="margin-top:8px" onclick="saveDialogue()">Save & exit</button></div></div></div>`;
+}
+
+function lockedContext(id){
+  const map={'inner-child':'This opens after Emotional Awareness, because connection begins with noticing what is present.','supportive-adult':'This opens after Inner Child Connection, because the adult self responds after the child is heard.','grounding':'This opens after Compassionate Adult, because nourishment needs a caring inner base.','mind-filter':'This opens after Part I, because seeing mind stories is easier when you feel grounded.','inner-voice':'This opens after Mind’s Filter, because the voice becomes clearer after the story is named.','armour':'This opens after Inner Voice, because recognizing armour requires a safe foundation first.','inner-critic':'This opens after Inner Voice Overview, because we first learn to notice inner talk.','inner-victim':'This opens after Inner Critic, because each voice is explored one layer at a time.','inner-entitlement':'This opens after Inner Victim, because entitlement also protects unmet needs.','unworthiness':'This opens after Armour Overview, because shame needs safety and compassion first.','codependency':'This opens after Unworthiness, because codependency often protects the wound of not-enoughness.','pain-killer':'This opens after Codependency, because numbing is explored once relational patterns are clearer.'};
+  return map[id]||'This opens after the previous step, so your inner journey has enough safety and support.';
+}
+openLessonProgressive=function(id){ if(!isUnlocked(id)){showFeedback('Locked for now',lockedContext(id),'🔒');return;} openLesson(id); }
+function addLockedContextToCards(){
+  document.querySelectorAll('.lesson-card').forEach(card=>{
+    if(card.querySelector('.locked-context'))return;
+    const onclick=card.getAttribute('onclick')||'';
+    const m=onclick.match(/openLessonProgressive\('([^']+)'\)/);
+    if(m){const span=document.createElement('span');span.className='locked-context';span.textContent=lockedContext(m[1]);card.appendChild(span);}
+  });
+}
+
+function makeLineChart(values){
+  if(!values.length)return '<div class="empty">Complete a few check-ins to see your connection arc.</div>';
+  const w=300,h=85,p=10;
+  const pts=values.map((v,i)=>[p+(values.length===1?w/2:(i*(w-2*p)/(values.length-1))),h-p-((Number(v)||0)/10)*(h-2*p)]);
+  const poly=pts.map(p=>p.join(',')).join(' ');
+  const circles=pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#EAD3C8"/>`).join('');
+  return `<div class="line-chart"><svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline points="${poly}" fill="none" stroke="#5BA3A8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${circles}</svg></div>`;
+}
+function practiceBreakdownHTML(){
+  const h=state.history||[];
+  const keys=['Short Breathwork Ritual','Body Check-In','Somatic Exercise','Nervous System Grounding Moment','Inner Child / Compassionate Adult Dialogue','Morning Intention','Evening Reflection'];
+  const counts=keys.map(k=>[k,h.filter(x=>x.type===k).length]);
+  const max=Math.max(1,...counts.map(x=>x[1]));
+  return counts.map(([k,c])=>`<div class="breakdown-row"><div class="breakdown-label">${k}</div><div class="breakdown-track"><div class="breakdown-fill" style="width:${(c/max)*100}%"></div></div><span class="tiny">${c}</span></div>`).join('');
+}
+renderInsights=function(){
+  const grid=document.getElementById('insights-grid'); if(!grid)return;
+  const checks=state.checkins||[];
+  const values=checks.slice(-10).map(x=>Number(x.connection)||0);
+  const dialogues=(state.history||[]).filter(x=>x.type==='Inner Child / Compassionate Adult Dialogue').length;
+  const practices=Object.values(state.completed||{}).filter(Boolean).length;
+  const patterns=Object.values(state.selectedPatterns||{}).reduce((a,b)=>a+b,0);
+  grid.innerHTML=`<div class="analytic"><b>${checks.length}</b><span>check-ins</span></div><div class="analytic"><b>${dialogues}</b><span>dialogues</span></div><div class="analytic"><b>${practices}</b><span>practised</span></div><div class="analytic"><b>${patterns}</b><span>patterns noticed</span></div>`;
+  const trendBox=document.getElementById('insights-trend');
+  const milestone=dialogues>=10?'You’ve done 10 inner child dialogues — that’s real courage.':dialogues>=3?'You’ve returned to your inner child more than once. That is a pattern of care.':'Each practice is a small return, not a performance.';
+  trendBox.innerHTML=`${makeLineChart(values)}<div class="chart-caption">Your connection over time is a story of returning, not a score to perfect.</div><div class="card b-navy" style="margin-top:12px"><div class="slbl">Most Practiced</div>${practiceBreakdownHTML()}</div><div class="milestone-card">🌿 ${milestone}</div>`;
+}
+
+function weekKey(dateStr){const d=new Date(dateStr);if(isNaN(d))return 'Saved Reflections';const start=new Date(d);start.setDate(d.getDate()-d.getDay());return 'Week of '+start.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
+function archiveEntryHTML(h){
+  if(!h.id)h.id='entry-'+Math.random().toString(36).slice(2);
+  const starred=!!state.starredEntries[h.id];
+  return `<div class="history-item"><h4>${starred?'⭐ ':''}${h.type} · ${h.date}</h4><p>Feeling: ${h.feeling} · Connection: ${h.connection}/10</p>${h.note?`<p>${String(h.note).replace(/\n/g,'<br>')}</p>`:''}<button class="star-btn ${starred?'on':''}" onclick="toggleStar('${h.id}')">${starred?'Starred':'Star / revisit'}</button></div>`;
+}
+function groupArchiveHTML(arr){
+  if(!arr.length)return 'No saved entries yet.';
+  const groups={};arr.forEach(h=>{const k=weekKey(h.date);(groups[k]=groups[k]||[]).push(h)});
+  return Object.entries(groups).map(([k,items])=>{
+    const vals=items.map(x=>Number(x.connection)).filter(x=>!isNaN(x));
+    const avg=vals.length?(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1):'—';
+    const feelings={};items.forEach(x=>{if(x.feeling)feelings[x.feeling]=(feelings[x.feeling]||0)+1});
+    const common=Object.entries(feelings).sort((a,b)=>b[1]-a[1])[0]?.[0]||'—';
+    return `<div class="archive-group"><div class="archive-group-title">${k}</div><div class="archive-summary">${items.length} entries · avg connection ${avg} · most common: ${common}</div>${items.map(h=>archiveEntryHTML(h)).join('')}</div>`;
+  }).join('');
+}
+function toggleStar(id){state.starredEntries[id]=!state.starredEntries[id];save();renderHistory();renderHistoryInline();}
+renderHistory=function(){ensureEntryIds();let box=document.getElementById('history-list');if(!box)return;let q=(document.getElementById('history-search')?.value||'').toLowerCase();let arr=(state.history||[]).filter(h=>JSON.stringify(h).toLowerCase().includes(q));box.innerHTML=groupArchiveHTML(arr);}
+renderHistoryInline=function(){ensureEntryIds();const box=document.getElementById('history-list-inline');if(!box)return;const q=(document.getElementById('history-search-inline')?.value||'').toLowerCase();const arr=(state.history||[]).filter(h=>JSON.stringify(h).toLowerCase().includes(q));box.innerHTML=groupArchiveHTML(arr);}
+
+const saveBeforeNineUX = save;
+save=function(){ensureEntryIds();saveBeforeNineUX();renderConstellation();celebrateConstellation();addLockedContextToCards();}
+setTimeout(()=>{renderConstellation();addLockedContextToCards();renderInsights();},120);
 
 if(synth){synth.getVoices();synth.onvoiceschanged=()=>synth.getVoices()}renderFeelings();renderDash();renderHistory();renderHistoryInline();renderPills();renderPatterns();renderTimeline();renderInsights();initOnboard();
 </script>
